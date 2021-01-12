@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Notes</h2>
+    <p>
+      <a href="{% url 'uploadSnotes' %}" class="btn btn-primary">Upload Notes</a>
+    </p>
+  {% endblock %}
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Student</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in snote %}
+        <tr>
+          <td>{{ s.name }}</td>
+          <td>{{ s.student }}</td>
+          <td>
+            <a href="{{ s.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download PDF
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
